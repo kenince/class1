@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.vps.web.stations.StationsEdit"
+        datasource="stationsDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.vps.web.stations">
+    <dsContext>
+        <datasource id="stationsDs"
+                    class="com.company.vps.entity.Stations"
+                    view="stations-view">
+            <collectionDatasource id="officersDs"
+                                  property="officers"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="stationsDs">
+            <column width="250px">
+                <field property="stationName"/>
+                <field property="division"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="officersBox"
+                  caption="msg://com.company.vps.entity/Stations.officers">
+            <table id="officersTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="login"
+                            caption="msg://serviceNumber"/>
+                    <column id="name"
+                            caption="Officer&apos;s Name"/>
+                </columns>
+                <rows datasource="officersDs"/>
+                <buttonsPanel>
+                    <button action="officersTable.create"/>
+                    <button action="officersTable.edit"/>
+                    <button action="officersTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

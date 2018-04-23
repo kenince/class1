@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.vps.web.stations.StationsBrowse"
+        focusComponent="stationsesTable"
+        lookupComponent="stationsesTable"
+        messagesPack="com.company.vps.web.stations">
+    <dsContext>
+        <groupDatasource id="stationsesDs"
+                         class="com.company.vps.entity.Stations"
+                         view="stations-view">
+            <query>
+                <![CDATA[select e from vps$Stations e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="stationsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="stationsesTable"
+                datasource="stationsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="stationsesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="stationName"/>
+                <column id="division"/>
+            </columns>
+            <rows datasource="stationsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="stationsesTable.create"/>
+                <button id="editBtn"
+                        action="stationsesTable.edit"/>
+                <button id="removeBtn"
+                        action="stationsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

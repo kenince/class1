@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="systemSetup"
+          icon="COGS">
+        <item screen="vps$Officers.browse"/>
+        <item screen="vps$Stations.browse"/>
+        <item screen="vps$Division.browse"/>
+        <item screen="vps$Counties.browse"/>
+    </menu>
+    <menu id="application-vps"
+          insertAfter="help">
+        <item screen="vps$Occurrences.browse"/>
+    </menu>
+</menu-config>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.vps.web.division.DivisionEdit"
+        datasource="divisionDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.vps.web.division">
+    <dsContext>
+        <datasource id="divisionDs"
+                    class="com.company.vps.entity.Division"
+                    view="division-view">
+            <collectionDatasource id="stationsDs"
+                                  property="stations"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="divisionDs">
+            <column width="250px">
+                <field property="divisionName"/>
+                <field property="county"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="stationsBox"
+                  caption="msg://com.company.vps.entity/Division.stations">
+            <table id="stationsTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="stationName"/>
+                </columns>
+                <rows datasource="stationsDs"/>
+                <buttonsPanel>
+                    <button action="stationsTable.create"/>
+                    <button action="stationsTable.edit"/>
+                    <button action="stationsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

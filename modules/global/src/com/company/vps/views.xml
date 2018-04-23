@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.company.vps.entity.Officers"
+          extends="_local"
+          name="officers-view">
+        <property name="station"
+                  view="_minimal"/>
+        <property name="group"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.vps.entity.SubCounties"
+          extends="_local"
+          name="subCounties-view">
+        <property name="county"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.vps.entity.Counties"
+          extends="_local"
+          name="counties-view">
+        <property name="subCounties"
+                  view="_minimal"/>
+        <property name="divisions"
+                  view="_local"/>
+    </view>
+    <view class="com.company.vps.entity.Division"
+          extends="_local"
+          name="division-view">
+        <property name="stations"
+                  view="_minimal"/>
+        <property name="county"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.vps.entity.Stations"
+          extends="_local"
+          name="stations-view">
+        <property name="officers"
+                  view="_minimal"/>
+        <property name="division"
+                  view="_minimal"/>
+    </view>
+</views>

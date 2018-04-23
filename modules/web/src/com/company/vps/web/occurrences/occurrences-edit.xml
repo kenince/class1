@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.vps.web.occurrences.OccurrencesEdit"
+        datasource="occurrencesDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.vps.web.occurrences">
+    <dsContext>
+        <datasource id="occurrencesDs"
+                    class="com.company.vps.entity.Occurrences"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="1200"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="occurrencesDs">
+            <column width="250px">
+                <field property="occurrenceNo"/>
+                <field property="description"
+                       height="600" width="500px"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
