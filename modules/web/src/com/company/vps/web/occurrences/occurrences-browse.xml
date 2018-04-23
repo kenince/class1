@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.vps.web.occurrences.OccurrencesBrowse"
+        focusComponent="occurrencesesTable"
+        lookupComponent="occurrencesesTable"
+        messagesPack="com.company.vps.web.occurrences">
+    <dsContext>
+        <groupDatasource id="occurrencesesDs"
+                         class="com.company.vps.entity.Occurrences"
+                         view="_local">
+            <query>
+                <![CDATA[select e from vps$Occurrences e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="occurrencesesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="occurrencesesTable"
+                datasource="occurrencesesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="occurrencesesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="occurrenceNo"/>
+                <column id="description"/>
+            </columns>
+            <rows datasource="occurrencesesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="occurrencesesTable.create"/>
+                <button id="editBtn"
+                        action="occurrencesesTable.edit"/>
+                <button id="removeBtn"
+                        action="occurrencesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

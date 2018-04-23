@@ -1,0 +1,2 @@
+alter table VPS_SUB_COUNTIES add constraint FK_VPS_SUB_COUNTIES_COUNTY foreign key (COUNTY_ID) references VPS_COUNTIES(ID);
+create index IDX_VPS_SUB_COUNTIES_COUNTY on VPS_SUB_COUNTIES (COUNTY_ID);

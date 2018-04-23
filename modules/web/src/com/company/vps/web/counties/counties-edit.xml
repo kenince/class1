@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.vps.web.counties.CountiesEdit"
+        datasource="countiesDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.vps.web.counties">
+    <dsContext>
+        <datasource id="countiesDs"
+                    class="com.company.vps.entity.Counties"
+                    view="counties-view">
+            <collectionDatasource id="subCountiesDs"
+                                  property="subCounties"/>
+            <collectionDatasource id="divisionsDs"
+                                  property="divisions"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="countiesDs">
+            <column width="250px">
+                <field property="countyCode"/>
+                <field property="countyName"/>
+            </column>
+        </fieldGroup>
+        <tabSheet>
+            <tab id="subCounties"
+                 caption="Sub Counties"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="subCountiesBox"
+                          caption="msg://com.company.vps.entity/Counties.subCounties">
+                    <table id="subCountiesTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="subCounty"/>
+                        </columns>
+                        <rows datasource="subCountiesDs"/>
+                        <buttonsPanel>
+                            <button action="subCountiesTable.create"/>
+                            <button action="subCountiesTable.edit"/>
+                            <button action="subCountiesTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab id="divisions"
+                 caption="Divisions"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="divisionsBox"
+                          caption="msg://com.company.vps.entity/Counties.divisions">
+                    <table id="divisionsTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="divisionName"/>
+                        </columns>
+                        <rows datasource="divisionsDs"/>
+                        <buttonsPanel>
+                            <button action="divisionsTable.create"/>
+                            <button action="divisionsTable.edit"/>
+                            <button action="divisionsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

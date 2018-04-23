@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.vps.web.counties.CountiesBrowse"
+        focusComponent="countiesesTable"
+        lookupComponent="countiesesTable"
+        messagesPack="com.company.vps.web.counties">
+    <dsContext>
+        <groupDatasource id="countiesesDs"
+                         class="com.company.vps.entity.Counties"
+                         view="counties-view">
+            <query>
+                <![CDATA[select e from vps$Counties e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="countiesesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="countiesesTable"
+                datasource="countiesesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="countiesesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="countyCode"/>
+                <column id="countyName"/>
+            </columns>
+            <rows datasource="countiesesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="countiesesTable.create"/>
+                <button id="editBtn"
+                        action="countiesesTable.edit"/>
+                <button id="removeBtn"
+                        action="countiesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

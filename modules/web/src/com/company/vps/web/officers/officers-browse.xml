@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.vps.web.officers.OfficersBrowse"
+        focusComponent="officersesTable"
+        lookupComponent="officersesTable"
+        messagesPack="com.company.vps.web.officers">
+    <dsContext>
+        <groupDatasource id="officersesDs"
+                         class="com.company.vps.entity.Officers"
+                         view="officers-view">
+            <query>
+                <![CDATA[select e from vps$Officers e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="officersesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="officersesTable"
+                datasource="officersesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="officersesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="login"
+                        caption="msg://serviceNumber"/>
+                <column id="name"/>
+                <column id="position"/>
+                <column id="email"/>
+                <column id="station"/>
+                <column id="active"/>
+                <column id="changePasswordAtNextLogon"/>
+            </columns>
+            <rows datasource="officersesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="officersesTable.create"/>
+                <button id="editBtn"
+                        action="officersesTable.edit"/>
+                <button id="removeBtn"
+                        action="officersesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>
